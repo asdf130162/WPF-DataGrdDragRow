@@ -153,7 +153,7 @@ namespace WpfApp1.ControlExtend
             {
                 //get target index
                 var targetIndex = ((dataGrid).ItemsSource as IList).IndexOf(targetItem);
-
+                if (targetIndex < 0) return;
                 //remove the source from the list
                 ((dataGrid).ItemsSource as IList).Remove(DraggedItem);
 

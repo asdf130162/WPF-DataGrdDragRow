@@ -27,13 +27,17 @@
             </MenuItem>
         </Menu>
         <Grid Grid.Row="1" Margin="5">
-            <Popup x:Name="popup1" AllowsTransparency="True" IsHitTestVisible="False" Placement="RelativePoint" PlacementTarget="{Binding ElementName=dataGrid1}">
-                <TextBlock Margin="8,0,0,0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Text="Dragging..." />
-            </Popup>
+            <Popup x:Name="popup1" AllowsTransparency="True" IsHitTestVisible="False" Placement="RelativePoint" PlacementTarget="{Binding ElementName=dataGrid1}" />
             <DataGrid x:Name="dataGrid1" controlEx:DragDropRowBehavior.Enabled="True" controlEx:DragDropRowBehavior.PopupControl="{Binding ElementName=popup1}" AutoGenerateColumns="False" ItemsSource="{Binding ListItem}" RowHeaderWidth="60">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Column1}" Header="column1" />
-                    <DataGridTextColumn Binding="{Binding Column2}" Header="column2" />
+                    <DataGridTemplateColumn Header="column2" IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Width="100" Text="{Binding Column2, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                     <DataGridTemplateColumn Header="column3" IsReadOnly="True">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

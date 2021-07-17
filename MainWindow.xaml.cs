@@ -30,11 +30,11 @@ namespace WpfApp1
         {
             string column1;
             string column2;
-            string column3;
+            bool column3;
 
             public string Column1 { get => column1; set { UpdateProper(ref column1, value); } }
             public string Column2 { get => column2; set { UpdateProper(ref column2, value); } }
-            public string Column3 { get => column3; set { UpdateProper(ref column3, value); } }
+            public bool Column3 { get => column3; set { UpdateProper(ref column3, value); } }
         }
     }
 }

@@ -34,7 +34,23 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Column1}" Header="column1" />
                     <DataGridTextColumn Binding="{Binding Column2}" Header="column2" />
-                    <DataGridTextColumn Binding="{Binding Column3}" Header="column3" />
+                    <DataGridTemplateColumn Header="column3" IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border Margin="-10,0">
+                                    <ToggleButton IsChecked="{Binding Column3, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                                        <ToggleButton.Resources>
+                                            <Style BasedOn="{StaticResource ToggleButtonSwitch}" TargetType="{x:Type ToggleButton}">
+                                                <Style.Resources>
+                                                    <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource InfoColor}" />
+                                                </Style.Resources>
+                                            </Style>
+                                        </ToggleButton.Resources>
+                                    </ToggleButton>
+                                </Border>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
